@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#18392c">
+<meta name="description" content="Des recettes adaptées à ton stock et à tes objectifs nutritionnels.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20192%20192%22%3E%3Crect%20x%3D%228%22%20y%3D%228%22%20width%3D%22176%22%20height%3D%22176%22%20rx%3D%2243%22%20fill%3D%22%2318392c%22%2F%3E%3Ccircle%20cx%3D%2296%22%20cy%3D%2296%22%20r%3D%2254%22%20fill%3D%22none%22%20stroke%3D%22%23faf8f2%22%20stroke-width%3D%225%22%2F%3E%3Ccircle%20cx%3D%2296%22%20cy%3D%2296%22%20r%3D%2243%22%20fill%3D%22none%22%20stroke%3D%22%23dce9dc%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M96%20125V76%22%20stroke%3D%22%23dce9dc%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M96%2087C70%2098%2063%2078%2067%2076C82%2071%2094%2076%2096%2087Z%22%20fill%3D%22%23dce9dc%22%2F%3E%3Cpath%20d%3D%22M96%2077C94%2056%20114%2055%20125%2060C126%2074%20112%2084%2096%2077Z%22%20fill%3D%22%23dce9dc%22%2F%3E%3Ccircle%20cx%3D%22132%22%20cy%3D%22125%22%20r%3D%226%22%20fill%3D%22%23be684e%22%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAHR0lEQVR42u3dPbITRxSGYTHFOgjYADlFQkZ4Y2eETtkAW3Dm0ImL+IbOSChyb8DBXQIRRYIDF1XiWj893T2j7nOet8qJLUs9o+895/SMpPvk29cv3w9AUhanAAQACAAQACAAQACAAEBsns646GevX3rnBuXh4+ep1vtk9Bthwk6KdAIIPRlSCiD4REgngNDjljLcTADBxwgiLMKPzCPwrh1A8DFaN1iEH5m7wSL8yCzBpiOQ4GP0kWgRfmTuBovwI7MEi/AjswSL8COzBIvwI7MEvhCD1Cwj2QjsnbtF+JFZgkX4kVkCewDYA6j+yNoFFuFHZgmMQDACqf7I2gV0AOgAAAGMP0g4BukA0AFUf2TtAjoAdACAAMYfJByDdACk5qlTsD0tv2mj+xIgTdhLn48UBAgb+JrXJEQ9V38a0ckdI/RGpm3eLx0gSPAfr5EIRqBhgt8SxtrXJgIBbhL83oE79Xxr1kUEAmwe/L3Ddfx6pWslAgG6Bn+UIK2VgQg/407wyvA/e/1y2PCsWdsMG3oCDBT+kYNfu1YSJB+BSoPfg0/396v/n1d3d13Go0vHmX0kSnsj7Fr4W467Jux7SLHlMc/6XqcUYIsgXAt9TXC3eM6MEhCg8GT0Cn7r6LLH6/U+DwRIFP69Q7/VOrJIQIBOb/Yowe+5rgwSpBfg3AloqfojBL/nGnucIwIEDP9IwS/dFNeuOaoEaQXoGf5bBb/2kuqru7uq9UeUIKUAs4d/i3sJWSVIJ0DLGxgx+DUiRJLgkgA+C5Qs/Hu+zgyEE6C2ckUL/5tf3za93rnzFe0DdIvwj7HZ3SL8pyQ4Pj4SBBJg5vD3qv5vfn37U+j/+v2Pk69FAnuAcJX/cfBPhb+2E9gDBK3+I4S/NXwlVf/ca5Yed+QuELYDlI4+M1f+tVX/kvy1oxABBq3+2cLfQqkEEbtAyK9EXqpWs8+7PYN/7vycKwzPXr90GXT26j/zpnfL8G/5VUsCDFb9Rwp/yVpqNro1r1kyCkXbC0wrwNqqM+vo02OjWzsKZegCofYAJdWpV/UvCcil17r2/z++i9sr+NeO//HHqKPvBaYU4FbVf+3z1N5o23qj22NDfO59mW1ECrMH2LL6f7q/b5ZozXP8CP2tNrolj4uyF/Bx6J33Dpee7zh4I13licx0X4hZ+7GH2is/t9g0b/H5nJbgXzt3s3xpJvyfSOp9wke4YtRyd3avih9hMxx6BBrtuv+1L6mcC/KPf3o+dg8JZ8AfyNih+tcE3xxPgKJZbuSrEaNcztx7DJrpcmjYDlAz/vT8ZlaU4P+4Mbb2noAOkJAMFZ8AEHwCQPAJkHYDLPhxNsIh7wPUXv+/9vjjz+Xv+dHkETbCPS8S6ABGHRBg3Gp3qtIJfkx8GrQA4SdAui4AAqSXYCsRCEaAtN1A+G2Cp5Wg5TKg4BMgVDdo/VUIEMBoBHsAgAAAAQACdJ3P/TnQPkT4ewrTC3Dqo7XRfqt+Vmb7rrYRCCAAQAAQICY2wjbA4QSwEbYB1gEAAhiDjD8EMAY57/kEWDtf6gL7Vn9/IwwgwJjtWBdYV/0zjJ1TClA7BuGw6Xmb8S9HhhqBdAHVP40AuoDqrwOsrE6uCJ3nw4vnhw8vnh8e3r87PLx/d/jw4nn46j+9AC1VhwQ/h3/Nv49S/UN2gNIugLKQH//3iDccpxegpvoYhdZV+EuPm7n6h+0AJdUquwSl4a99PAEG6AKlLdt+YP89GAEGYO1PHSIeT759/fI9iuXnKv61YzgOf4ZN8qf7+8PD+3frC8Zvf4bKRbgOUDsKZeoEPY4vwugTdgQiQVn4f/n7n6rqHyn86fcAmSQ4NeaVSnA8+tgDBN8PRNsXlBzHpUucs879KfcAPUahSN2gVOJznSBC+NN2gC06wSzdoHbNredqxg4QXoBeb+wMIrSsMWr4CVBwEmq7wSgitKyrx3khQCIJRhKhdR0Zwk+Ajd/0vWXo9XpZwk+AlSekpwitId3iObc4dgKQYFVwW2jpLhnDT4CGQPQ8/hopeo1Sex4nAYjguCY6Dz4LVBiCh4+fp/lObOlaM4T/GgRYGYaRRVizNuH/j6dOwf9DURKi48fcMkxrZRR8AnQV4RYy1HQgwSfA5iKce2xL+FrHLcEnwE1E6BliwSdACBEEfzyu3gdwUser7t6ffu+PDtA5fHsIIfBGoKlGkBYphJ0AIaXAGLgTDALMsNEDem+AdQDoAE4BCGAMQsLxRweADrCFVcAM1V8HgA7gFIAAxiAkHH90AOgAe1gGjFj9mzoACTB7+I1AMALdwjpghOrfpQOQALOGv9sIRALMGH57ANgDjGQjsHfelhEXBeyVs2XkxQFb52uZYZHAVrlaZloshL83RT+N2IrfxcGohXSJcBAQ/qEFIAFGzcsuI5CRCKMWyiXDQUL4h+oAugFGKYg3F4AMQn9LhhKACIJPADIIPQFIIewEADbHF2JAAIAAAAEAAgAEADLwL+ET+0j0hgQcAAAAAElFTkSuQmCC">
+<link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png">
+<meta name="apple-mobile-web-app-title" content="Dans mon assiette">
+<meta name="application-name" content="Dans mon assiette">
+<title>Dans mon assiette</title>
+<style>
+:root{
+  --ink:#24372e;--muted:#718077;--green:#24523d;--green-dark:#173d2c;
+  --sage:#dce9dc;--sage-light:#eef5ed;--cream:#faf8f2;--line:#e5e9e1;
+  --white:#fff;--red:#a7473d;--gold:#d6a65d;--shadow:0 12px 32px rgba(35,58,43,.07)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top left,#eef3e9 0,transparent 42%),var(--cream);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer;transition:transform .16s ease,box-shadow .16s ease,background .16s ease,border-color .16s ease}
+button:active{transform:scale(.985)}
+.app{max-width:850px;margin:auto;padding:20px 15px 42px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(130deg,#173d2c 0%,#24563e 65%,#39704e 100%);color:#fff;border-radius:28px;padding:25px 23px 21px;margin-bottom:18px;box-shadow:0 18px 40px rgba(26,67,45,.16)}
+.hero:after{content:"";position:absolute;width:230px;height:230px;border:1px solid #ffffff1b;border-radius:50%;right:-75px;top:-105px;box-shadow:0 0 0 24px #ffffff08,0 0 0 50px #ffffff06;pointer-events:none}
+.brand{display:flex;align-items:center;gap:13px;position:relative;z-index:1}
+.logo{width:54px;height:54px;border-radius:18px;background:#e8f0df;color:var(--green);display:grid;place-items:center;font-size:27px;box-shadow:inset 0 0 0 1px #ffffff60}
+.hero h1{font-size:clamp(22px,5vw,29px);letter-spacing:-.7px;line-height:1.15;margin:0;font-weight:800}
+.hero p{margin:6px 0 0;color:#d6e5d8;font-size:14px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:23px;position:relative;z-index:1}
+.stat{background:#ffffff12;border:1px solid #ffffff18;border-radius:17px;padding:12px 14px;backdrop-filter:blur(6px)}
+.stat small{display:block;color:#d5e4d8;font-size:12px}
+.stat strong{display:block;font-size:27px;line-height:1.25;margin-top:3px;letter-spacing:-.5px}
+.tabs{position:sticky;top:8px;z-index:20;display:flex;background:#e9eee6ee;border:1px solid #e1e8df;border-radius:17px;padding:5px;gap:4px;margin:17px 0;backdrop-filter:blur(14px);box-shadow:0 7px 22px #213b2b0c}
+.tabs button{flex:1;border:0;background:transparent;padding:12px 8px;border-radius:12px;color:#66766b;font-weight:750;font-size:14px;min-height:44px}
+.tabs button.active{background:#fff;color:var(--green-dark);box-shadow:0 3px 10px #1c402b12}
+.panel{background:rgba(255,255,255,.96);border:1px solid #e8ebe4;border-radius:22px;padding:19px;margin-bottom:15px;box-shadow:var(--shadow);scroll-margin-top:88px}
+.panel h2{font-size:18px;letter-spacing:-.25px;margin:0 0 12px;font-weight:800}
+.sub{font-size:13px;color:var(--muted);margin:-5px 0 14px}
+.moments{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.moment{border:1px solid var(--line);border-radius:14px;background:#fff;padding:13px 5px;color:var(--ink);font-weight:750;font-size:13px}
+.moment.active{background:var(--sage-light);border-color:#8fb69a;color:var(--green-dark);box-shadow:inset 0 0 0 1px #b6d1b8}
+.search{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin:10px 0 14px;background:#fbfcfa;outline:none}
+.search:focus,.field:focus{border-color:#78a384;box-shadow:0 0 0 3px #dcebdd}
+.cat{border-top:1px solid var(--line);padding-top:15px;margin-top:15px}
+.cat h3{font-size:12px;text-transform:uppercase;letter-spacing:.7px;color:#77877b;margin:0 0 10px;font-weight:800}
+.items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.food{display:flex;align-items:center;gap:9px;text-align:left;border:1px solid #e7ebe4;background:#fff;border-radius:13px;padding:11px;font-size:13px;color:var(--ink);min-height:50px;line-height:1.3;transition:background .15s,border-color .15s,transform .15s}
+.food:hover{border-color:#b5cbb7;background:#fbfdf9}
+.food .check{width:19px;height:19px;border:1.5px solid #c2cdc3;border-radius:6px;display:grid;place-items:center;flex-shrink:0;font-size:12px}
+.food.selected{background:#edf5ec;border-color:#a5c4a8}
+.food.selected .check{background:var(--green);border-color:var(--green);color:white}
+.addrow{display:flex;gap:8px;margin-top:10px}
+.addrow input{flex:1;min-width:0}
+.field{border:1px solid var(--line);border-radius:13px;padding:12px 13px;width:100%;background:#fff;color:var(--ink);outline:none}
+.btn{border:0;border-radius:13px;padding:12px 16px;font-weight:800;font-size:14px;letter-spacing:.05px}
+.primary{background:linear-gradient(135deg,#285a40,#1c4832);color:white;box-shadow:0 5px 12px #214c351b}
+.primary:hover{box-shadow:0 8px 18px #214c352b;filter:brightness(1.04)}
+.secondary{background:#edf2eb;color:var(--ink)}
+.danger{background:#fff5f2;color:var(--red);border:1px solid #f0d8d1}
+.full{width:100%}
+.stockchips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:flex;align-items:center;gap:8px;background:#edf3eb;border:1px solid #e2eade;border-radius:100px;padding:8px 11px;font-size:12px;font-weight:650}
+.chip button{border:0;background:transparent;color:#718077;padding:0 0 1px;font-size:18px;line-height:1}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.row h2{margin-bottom:0}
+.row label{font-weight:700}
+.value{font-weight:850;color:var(--green);font-variant-numeric:tabular-nums}
+.range{width:100%;accent-color:var(--green);margin:13px 0 19px;cursor:pointer}
+.options{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 17px}
+.option{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;color:var(--ink);font-weight:650}
+.option.active{background:var(--sage-light);border-color:#94b89a;color:var(--green-dark);font-weight:800}
+.toggle{display:flex;gap:11px;align-items:flex-start;background:#f7f9f5;border:1px solid #e9eee5;padding:13px;border-radius:14px}
+.toggle input{margin-top:5px;accent-color:var(--green);width:17px;height:17px}
+.note{font-size:12px;color:var(--muted);margin-top:10px}
+.status{font-size:12px;color:#347348;min-height:18px}
+.stock-summary{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f1f6ef;border:1px solid #e1ecde;border-radius:14px;padding:12px 14px;margin:13px 0}
+.stock-summary strong{font-size:14px;color:var(--green-dark)}
+.stock-summary small{display:block;color:var(--muted);font-size:12px}
+.section-kicker{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:850;color:#718477;margin-bottom:5px}
+.inline-link{border:0;background:transparent;color:var(--green);font-weight:800;padding:8px 0}
+.empty-state{border:1px dashed #cbd8c9;border-radius:16px;padding:20px;text-align:center;background:#f8faf6;color:var(--muted);margin-top:12px}
+.empty-state strong{display:block;color:var(--ink);margin-bottom:5px}
+.recipe{overflow:hidden;border:1px solid #e7ebe4;border-radius:20px;padding:13px;margin-top:15px;background:#fff;box-shadow:0 7px 22px rgba(35,58,43,.05);transition:box-shadow .18s,transform .18s}
+.recipe:hover{box-shadow:0 12px 28px rgba(35,58,43,.09);transform:translateY(-1px)}
+.recipe .recipe-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px;margin:2px 0 10px}
+.recipe .recipe-meta strong{color:var(--green);font-size:13px}
+.recipe .recipe-section{background:#f8faf6;border-radius:13px;padding:11px 12px;margin-top:10px}
+.recipe .recipe-section strong{display:block;margin-bottom:4px;color:#314b3a}
+.recipe .recipe-section p{margin:0}
+.recipe img{aspect-ratio:16/9}
+.recipe img{display:block;width:100%;height:205px;object-fit:cover;border-radius:13px;margin-bottom:13px;background:#edf1ed}
+.recipe h3{margin:0 0 8px;font-size:17px;letter-spacing:-.25px}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0 12px}
+.pill{font-size:12px;font-weight:750;background:#edf4eb;color:#2a5a3e;padding:6px 9px;border-radius:9px}
+.recipe p{margin:8px 0;font-size:13px;line-height:1.55}
+.recipe p strong{color:#314b3a}
+.hidden{display:none!important}
+footer{text-align:center;font-size:12px;color:#829087;padding:12px 8px 6px}
+h3{font-size:15px}
+button:focus-visible{outline:3px solid #9cc7a3;outline-offset:2px}
+@media(min-width:600px){
+ .app{padding:28px 24px 46px}
+ .hero{padding:29px 28px 24px}
+ .items{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .panel{padding:22px}
+ .recipe{padding:15px}
+ .recipe img{height:230px}
+}
+@media(max-width:380px){
+ .app{padding:12px 10px 28px}
+ .hero{padding:19px 16px;border-radius:22px}
+ .panel{padding:14px;border-radius:18px}
+ .tabs button{font-size:12px;padding:11px 4px}
+ .moment{font-size:12px}
+ .items{gap:6px}
+ .food{padding:9px 8px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Direction artistique — carnet culinaire éditorial, chaleureux et vivant */
+:root{
+  --ink:#252820;--muted:#77786c;--green:#465b38;--green-dark:#293b25;
+  --sage:#e7e9dc;--sage-light:#f1f1e8;--cream:#f8f5ed;--line:#e7e1d5;
+  --white:#fffefa;--red:#b94f37;--gold:#dcae62;--shadow:0 8px 24px rgba(43,44,31,.045)
+}
+html{background:var(--cream)}
+body{background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0}
+.app{max-width:780px;padding:24px 19px 58px}
+.hero{background:var(--cream);color:var(--ink);border-radius:0;padding:14px 2px 22px;margin-bottom:13px;box-shadow:none;border-bottom:1px solid #ded7c9;overflow:hidden}
+.hero:before{content:"";position:absolute;right:4px;top:6px;width:72px;height:72px;border-radius:50%;background:#e8d7b7;opacity:.65;z-index:0}
+.hero:after{content:"BIEN MANGER, SIMPLEMENT";position:absolute;right:0;bottom:11px;color:#8a8879;font-size:9px;font-weight:750;letter-spacing:1.8px;border:0;padding:0}
+.brand{gap:13px;align-items:center}
+.logo{position:relative;z-index:1;width:45px;height:45px;border-radius:50%;background:var(--green-dark);color:#f6e9cd;font-size:23px;box-shadow:none}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(27px,5vw,37px);font-weight:500;line-height:1.02;letter-spacing:-1.25px;color:var(--green-dark)}
+.hero p{margin-top:7px;color:#77786c;font-size:13px;letter-spacing:.05px}
+.stats{max-width:420px;gap:0;margin-top:24px;background:transparent}
+.stat{background:transparent;border:0;border-left:1px solid #ded7c9;border-radius:0;padding:5px 15px 4px 17px;backdrop-filter:none}
+.stat:first-child{border-left:0;padding-left:0}
+.stat small{color:#858273;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:750}
+.stat strong{color:var(--green-dark);font-family:Georgia,"Times New Roman",serif;font-size:27px;font-weight:500;letter-spacing:-.5px;margin-top:2px}
+.tabs{position:sticky;top:6px;margin:15px 0 24px;padding:0;gap:0;background:#f0ece2f2;border:1px solid #e4ddcf;border-radius:13px;box-shadow:0 5px 16px #302e2209;backdrop-filter:blur(12px);overflow:hidden}
+.tabs button{border-radius:0;min-height:45px;padding:11px 9px;background:transparent;color:#77786c;font-size:13px;font-weight:700}
+.tabs button+button{border-left:1px solid #e4ddcf}
+.tabs button.active{background:var(--green-dark);color:#fff9eb;box-shadow:none}
+.panel{background:var(--white);border:1px solid #e9e3d7;border-radius:17px;padding:20px;margin-bottom:13px;box-shadow:0 4px 16px rgba(43,44,31,.025);scroll-margin-top:76px}
+.panel h2{font-family:Georgia,"Times New Roman",serif;font-size:23px;font-weight:500;letter-spacing:-.55px;line-height:1.15;margin:0 0 12px;color:#30382b}
+.sub{font-size:13px;line-height:1.65;color:#77786c;margin:-3px 0 15px}
+.moments{gap:8px}
+.moment{position:relative;border:1px solid #e7e1d5;border-radius:12px;background:#fbf9f3;color:#55584c;padding:14px 6px;font-size:13px;font-weight:700;box-shadow:none;min-height:51px}
+.moment:hover{border-color:#b8b99f;background:#f7f5ec}
+.moment.active{background:#e9ebdd;border-color:#8e9a79;color:#34472c;box-shadow:inset 0 -3px 0 #65794f}
+.search,.field{border:1px solid #e5dfd3;border-radius:11px;background:#fffdf8;padding:13px 14px;color:var(--ink)}
+.search:focus,.field:focus{border-color:#83916b;box-shadow:0 0 0 3px #e9ebdd}
+.cat{border-top:1px solid #eee8dc;padding-top:15px;margin-top:15px}
+.cat h3{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:#8b8878;margin:0 0 10px;font-weight:800}
+.items{gap:8px}
+.food{border:1px solid #e9e4d9;border-radius:10px;background:#fffefa;color:#393d32;padding:11px 10px;font-size:12px;min-height:48px;box-shadow:none}
+.food:hover{border-color:#b5b99f;background:#faf9f1;transform:translateY(-1px)}
+.food.selected{background:#edf0e4;border-color:#9da98a;color:#34472c}
+.food .check{width:18px;height:18px;border-radius:5px;border-color:#c8c6b8}
+.food.selected .check{background:var(--green);border-color:var(--green)}
+.addrow{gap:9px}
+.btn{border-radius:10px;padding:12px 15px;font-size:13px;font-weight:750;letter-spacing:0}
+.primary{background:var(--green-dark);color:#fff9ed;box-shadow:none}
+.primary:hover{background:#405735;box-shadow:0 5px 13px #293b251c;transform:translateY(-1px);filter:none}
+.secondary{background:#eeede3;color:#3f4c35;border:1px solid #e1e0d4}
+.danger{background:#fbf0e9;color:#a44a35;border:1px solid #eed9cd}
+.stockchips{gap:7px}
+.chip{background:#f0f0e6;border:1px solid #e3e3d5;color:#4d5940;border-radius:8px;padding:7px 10px;font-size:12px}
+.chip button{color:#827f70}
+.row{gap:10px}
+.row h2{margin-bottom:0}
+.row label{font-size:13px;color:#45483c}
+.value{font-family:Georgia,"Times New Roman",serif;color:var(--red);font-size:17px;font-weight:600}
+.range{accent-color:var(--green);margin:15px 0 22px}
+.options{gap:7px;margin:10px 0 18px}
+.option{border:1px solid #e7e1d5;border-radius:9px;background:#fffdf8;color:#55584c;padding:9px 14px;font-size:13px}
+.option.active{background:#e9ebdd;border-color:#9ba787;color:#34472c;font-weight:800}
+.toggle{background:#f7f5ed;border:1px solid #e9e3d7;border-radius:12px;padding:13px}
+.toggle input{accent-color:var(--green)}
+.note{color:#858273;font-size:12px;line-height:1.55}
+.status{font-size:12px;color:#4f7042;min-height:18px}
+.stock-summary{background:#f1f0e5;border:1px solid #e7e4d5;border-radius:12px;padding:13px 14px;margin:13px 0}
+.stock-summary strong{color:#394a30;font-size:13px}
+.stock-summary small{color:#77786c;font-size:12px}
+.section-kicker{font-size:10px;letter-spacing:1.5px;color:#858273}
+.inline-link{color:var(--green-dark)}
+.empty-state{border:1px dashed #d4cbb8;border-radius:13px;padding:23px 18px;background:#faf8f1;color:#77786c}
+.empty-state strong{color:#343b2e;font-family:Georgia,"Times New Roman",serif;font-size:20px;font-weight:500}
+.recipe{border:1px solid #e7e1d5;border-radius:16px;padding:12px;margin-top:14px;background:#fffefa;box-shadow:0 5px 18px rgba(43,44,31,.035);transition:box-shadow .18s,transform .18s}
+.recipe:hover{box-shadow:0 10px 25px rgba(43,44,31,.08);transform:translateY(-2px)}
+.recipe img{display:block;width:100%;height:230px;aspect-ratio:16/9;object-fit:cover;border-radius:11px;margin-bottom:15px;background:#eeece2}
+.recipe h3{font-family:Georgia,"Times New Roman",serif;font-size:22px;font-weight:500;line-height:1.15;letter-spacing:-.35px;margin:0 0 8px;color:#30382b}
+.recipe .recipe-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#858273;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin:2px 0 10px}
+.recipe .recipe-meta strong{color:var(--red);font-size:11px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin:11px 0 13px}
+.pill{background:#f0f0e6;color:#46583a;border-radius:7px;padding:6px 9px;font-size:11px;font-weight:750}
+.recipe .recipe-section{background:#f8f6ef;border:1px solid #eee8dc;border-radius:11px;padding:12px;margin-top:10px}
+.recipe .recipe-section strong{display:block;margin-bottom:4px;color:#45543a;font-size:11px;text-transform:uppercase;letter-spacing:.8px}
+.recipe .recipe-section p{margin:0}
+.recipe p{margin:8px 0;font-size:13px;line-height:1.65;color:#55584c}
+.recipe p strong{color:#333d2b}
+footer{font-size:11px;letter-spacing:.1px;color:#999484;padding:20px 8px 6px}
+button:focus-visible{outline:3px solid #b9c29f;outline-offset:3px}
+@media(min-width:600px){.app{padding:32px 25px 62px}.hero{padding:16px 2px 25px}.panel{padding:24px}.recipe{padding:14px}.recipe img{height:270px}.recipe h3{font-size:24px}}
+@media(max-width:480px){.app{padding:13px 11px 32px}.hero{padding:12px 2px 22px}.hero:before{width:56px;height:56px;right:0;top:0}.hero:after{font-size:7px;right:0;bottom:10px;letter-spacing:1px}.logo{width:41px;height:41px;font-size:21px}.hero h1{font-size:27px;letter-spacing:-.9px}.hero p{font-size:12px}.stats{margin-top:22px}.stat{padding:5px 10px 4px 12px}.stat:first-child{padding-left:0}.stat strong{font-size:24px}.stat small{font-size:9px;letter-spacing:.7px}.panel{padding:16px;border-radius:14px}.panel h2{font-size:22px}.tabs button{font-size:12px;padding:11px 4px}.moment{font-size:12px;padding:12px 4px}.items{gap:6px}.food{font-size:11px;padding:9px 7px;gap:7px;min-height:46px}.recipe{padding:10px;border-radius:14px}.recipe img{height:190px}.recipe h3{font-size:21px}}
+@media(prefers-reduced-motion:reduce){button{transition:none!important}}
+
+
+/* Préparation : étapes lisibles, aérées et faciles à suivre sur mobile */
+.recipe .preparation-section{background:linear-gradient(145deg,#fbfaf5 0%,#f4f2e8 100%);border-color:#e7e1d3;padding:15px 14px 13px}
+.recipe .preparation-section>strong{font-size:11px;letter-spacing:1.15px;color:#68734e;margin-bottom:12px}
+.recipe .preparation-steps{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.recipe .preparation-steps li{display:grid;grid-template-columns:27px minmax(0,1fr);gap:10px;align-items:start}
+.recipe .step-number{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#e4e8d8;color:#526342;font-size:10px;font-weight:700;letter-spacing:.2px;margin-top:1px}
+.recipe .step-copy{font-size:13px;line-height:1.65;color:#45483d}
+@media(min-width:650px){.recipe .preparation-section{padding:17px}.recipe .preparation-steps{gap:14px}.recipe .step-copy{font-size:13.5px}}
+
+</style>
+</head>
+<body>
+<main class="app">
+<header class="hero">
+  <div class="brand"><div class="logo">♨</div><div><h1>Dans mon assiette</h1><p>Ton stock, tes objectifs, tes recettes.</p></div></div>
+  <div class="stats"><div class="stat"><small>Ingrédients en stock</small><strong id="stockCount">0</strong></div><div class="stat"><small>Protéines minimum</small><strong id="proteinStat">40 g</strong></div></div>
+</header>
+<nav class="tabs" aria-label="Navigation"><button class="active" data-tab="stock">Mon stock</button><button data-tab="goals">Mes objectifs</button><button data-tab="recipes">Mes recettes</button></nav>
+<section id="stockPage">
+  <div class="panel">
+    <h2>Quel est le moment ?</h2>
+    <p class="sub">Les catégories s'adaptent à ton choix. Ton stock global reste conservé.</p>
+    <div class="moments"><button class="moment" data-moment="Petit-déjeuner">☀️ Matin</button><button class="moment" data-moment="Goûter">🍎 Goûter</button><button class="moment" data-moment="Repas">🍽️ Repas</button></div>
+  </div>
+  <div class="panel">
+    <div class="row"><h2 id="categoryHeading">Ingrédients du petit-déjeuner</h2><span id="visibleCount" class="note"></span></div>
+    <input class="field" id="search" placeholder="Rechercher un ingrédient…" autocomplete="off">
+    <div id="categories"></div>
+    <div class="cat"><h3>Ajouter un produit absent de la liste</h3><div class="addrow"><input class="field" id="customFood" placeholder="Ex. fromage blanc 0 %"><button class="btn primary" id="addFood">Ajouter</button></div></div>
+  </div>
+  <div class="panel">
+    <div class="row"><h2>Mon stock actuel</h2><span id="stockBadge" class="note"></span></div>
+    <div class="stock-summary"><div><strong id="stockSummaryTitle">Ton stock est prêt</strong><small id="stockSummaryText">Sélectionne les ingrédients que tu as.</small></div><span aria-hidden="true" style="font-size:24px">🥗</span></div>
+    <div id="stockChips" class="stockchips"></div>
+    <p class="note">Appuie sur la croix d’un produit pour le retirer du stock.</p>
+    <button class="btn primary full" id="goRecipes">Trouver des recettes adaptées <span aria-hidden="true">→</span></button>
+    <button class="btn danger full" id="resetStock" style="margin-top:9px">Réinitialiser tous les aliments</button>
+  </div>
+</section>
+<section id="goalsPage" class="hidden">
+  <div class="panel"><h2>Objectifs par portion</h2>
+    <div class="row"><label for="protein">Protéines minimum</label><span class="value" id="proteinVal">40 g</span></div><input class="range" type="range" min="0" max="100" step="5" id="protein" value="40">
+    <div class="row"><label for="calories">Objectif calories (sans dépasser)</label><span class="value" id="calorieVal">600 kcal</span></div><input class="range" type="range" min="100" max="900" step="25" id="calories" value="600"><p class="note">Les recettes viseront le plus près possible de cet objectif, sans le dépasser.</p>
+    <h3>Temps de préparation</h3><div class="options" id="times"><button class="option" data-value="15">15 min</button><button class="option active" data-value="30">30 min</button><button class="option" data-value="45">45 min</button></div>
+    <h3>Nombre de portions</h3><div class="options" id="servings"><button class="option active" data-value="1">1</button><button class="option" data-value="2">2</button><button class="option" data-value="4">4</button></div>
+    <p></p><label class="toggle"><input type="checkbox" id="extras"><span><strong>Autoriser des ingrédients à acheter</strong><br><small class="note">Les ingrédients manquants seront indiqués séparément.</small></span></label>
+    <p class="status" id="saveStatus">✓ Sauvegarde automatique activée sur cet appareil.</p>
+    <button class="btn primary full" id="goRecipesGoals">Voir les recettes selon mes objectifs <span aria-hidden="true">→</span></button>
+  </div>
+</section>
+<section id="recipesPage" class="hidden">
+  <div class="panel"><h2>À toi de cuisiner</h2><p class="sub">Inspirations françaises, asiatiques, maghrébines et du monde entier, adaptées à ton stock et à tes objectifs nutritionnels.</p><button class="btn primary full" id="generate">✨ Trouver mes recettes</button><div id="recipeResults"></div></div>
+</section>
+<footer>Les réglages sont sauvegardés automatiquement dans ce navigateur.</footer>
+</main>
+<script>
+const KEY='dans-mon-assiette-v1';
+const defaults={
+ moment:'Petit-déjeuner',
+ stock:['Poulet','Œufs','Skyr','Whey','Flocons d’avoine','Riz','Pâtes','Lait','Compote','Cacao non sucré','Beurre de cacahuète en poudre'],
+ custom:[],protein:40,calories:600,time:'30',servings:'1',extras:false
+};
+let state;
+try{state={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')};}catch(e){state={...defaults};}
+const catalog={
+ 'Petit-déjeuner':{
+ 'Protéines & produits laitiers':['Œufs','Skyr','Fromage blanc','Yaourt grec','Whey','Lait','Fromage blanc protéiné'],
+ 'Céréales':['Flocons d’avoine','Pain','Biscottes','Muesli','Granola','Farine','Galettes de riz'],
+ 'Fruits & garnitures':['Banane','Pomme','Fruits rouges','Compote','Confiture','Miel','Beurre de cacahuète','Beurre de cacahuète en poudre','Noix','Chocolat','Cacao non sucré'],
+ 'Boissons & extras':['Café','Thé','Cannelle','Sucre','Édulcorant']},
+ 'Goûter':{
+ 'Protéines & produits laitiers':['Skyr','Fromage blanc','Yaourt grec','Whey','Lait','Œufs','Fromage blanc protéiné'],
+ 'Fruits':['Banane','Pomme','Fruits rouges','Compote'],
+ 'Garnitures sucrées':['Confiture','Miel','Beurre de cacahuète','Beurre de cacahuète en poudre','Noix','Chocolat','Cacao non sucré','Cannelle'],
+ 'Céréales & encas':['Flocons d’avoine','Pain','Biscottes','Muesli','Granola','Farine','Galettes de riz']},
+ 'Repas':{
+ 'Protéines':['Poulet','Dinde','Bœuf haché','Jambon','Œufs','Thon en boîte','Saumon','Poisson blanc','Crevettes','Tofu','Lentilles','Pois chiches'],
+ 'Féculents':['Riz','Pâtes','Pommes de terre','Semoule','Quinoa','Pain','Wraps'],
+ 'Légumes':['Tomates','Courgettes','Brocolis','Haricots verts','Carottes','Salade','Poivrons','Champignons','Oignons','Légumes surgelés'],
+ 'Sauces & assaisonnements':['Sauce tomate','Coulis de tomate','Crème légère','Moutarde','Sauce soja','Huile d’olive','Pesto','Épices'],
+ 'Produits laitiers':['Skyr','Fromage blanc','Fromage râpé','Mozzarella','Parmesan','Lait']}
+};
+function save(){localStorage.setItem(KEY,JSON.stringify(state));document.getElementById('saveStatus').textContent='✓ Sauvegardé automatiquement';updateStats();}
+function updateStats(){
+ document.getElementById('stockCount').textContent=state.stock.length;
+ document.getElementById('stockBadge').textContent=state.stock.length+' produit'+(state.stock.length>1?'s':'');
+ document.getElementById('proteinStat').textContent=state.protein+' g';
+ const title=document.getElementById('stockSummaryTitle'),sub=document.getElementById('stockSummaryText');
+ if(title&&sub){title.textContent=state.stock.length?state.stock.length+' ingrédient'+(state.stock.length>1?'s':'')+' sélectionné'+(state.stock.length>1?'s':''):'Ton stock est vide';sub.textContent=state.stock.length?'Tu peux maintenant chercher des recettes adaptées.':'Coche les aliments disponibles dans les catégories ci-dessus.';}
+}
+function renderCategories(){
+ const holder=document.getElementById('categories'),q=document.getElementById('search').value.trim().toLocaleLowerCase('fr');
+ holder.innerHTML='';document.getElementById('categoryHeading').textContent='Ingrédients — '+state.moment.toLocaleLowerCase('fr');
+ let count=0;
+ Object.entries(catalog[state.moment]).forEach(([cat,items])=>{
+ const filtered=[...items,...state.custom.filter(x=>!items.includes(x))].filter((x,i,a)=>a.indexOf(x)===i&&x.toLocaleLowerCase('fr').includes(q));
+ if(!filtered.length)return;count+=filtered.length;
+ const wrap=document.createElement('div');wrap.className='cat';const h=document.createElement('h3');h.textContent=cat;wrap.appendChild(h);
+ const grid=document.createElement('div');grid.className='items';
+ filtered.forEach(item=>{const b=document.createElement('button');b.className='food'+(state.stock.includes(item)?' selected':'');b.innerHTML='<span class="check">'+(state.stock.includes(item)?'✓':'')+'</span><span></span>';b.lastChild.textContent=item;b.onclick=()=>{state.stock=state.stock.includes(item)?state.stock.filter(x=>x!==item):[...state.stock,item];save();renderCategories();renderStock();};grid.appendChild(b);});
+ wrap.appendChild(grid);holder.appendChild(wrap);
+ });document.getElementById('visibleCount').textContent=count+' proposés';
+}
+function renderStock(){const holder=document.getElementById('stockChips');holder.innerHTML='';state.stock.forEach(item=>{const chip=document.createElement('span');chip.className='chip';const name=document.createElement('span');name.textContent=item;const b=document.createElement('button');b.textContent='×';b.setAttribute('aria-label','Retirer '+item);b.onclick=()=>{state.stock=state.stock.filter(x=>x!==item);save();renderCategories();renderStock();};chip.append(name,b);holder.appendChild(chip);});updateStats();}
+function setMoment(m){state.moment=m;save();document.querySelectorAll('[data-moment]').forEach(b=>b.classList.toggle('active',b.dataset.moment===m));renderCategories();}
+function sync(){document.getElementById('protein').value=state.protein;document.getElementById('calories').value=state.calories;document.getElementById('proteinVal').textContent=state.protein+' g';document.getElementById('calorieVal').textContent=state.calories+' kcal';document.getElementById('extras').checked=state.extras;document.querySelectorAll('#times button').forEach(b=>b.classList.toggle('active',b.dataset.value===state.time));document.querySelectorAll('#servings button').forEach(b=>b.classList.toggle('active',b.dataset.value===state.servings));document.querySelectorAll('[data-moment]').forEach(b=>b.classList.toggle('active',b.dataset.moment===state.moment));}
+document.querySelectorAll('[data-moment]').forEach(b=>b.addEventListener('click',()=>setMoment(b.dataset.moment)));
+function openTab(tab,scroll=true){
+ document.querySelectorAll('[data-tab]').forEach(x=>{x.classList.toggle('active',x.dataset.tab===tab);x.setAttribute('aria-current',x.dataset.tab===tab?'page':'false');});
+ ['stock','goals','recipes'].forEach(x=>document.getElementById(x+'Page').classList.toggle('hidden',x!==tab));
+ if(scroll)window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>openTab(b.dataset.tab)));
+document.getElementById('goRecipes').addEventListener('click',()=>{openTab('recipes');setTimeout(()=>document.getElementById('generate').click(),100);});
+document.getElementById('goRecipesGoals').addEventListener('click',()=>{openTab('recipes');setTimeout(()=>document.getElementById('generate').click(),100);});
+document.getElementById('search').addEventListener('input',renderCategories);
+document.getElementById('addFood').addEventListener('click',()=>{const el=document.getElementById('customFood'),v=el.value.trim();if(!v)return;if(!state.custom.some(x=>x.toLocaleLowerCase('fr')===v.toLocaleLowerCase('fr')))state.custom.push(v);if(!state.stock.includes(v))state.stock.push(v);el.value='';save();renderCategories();renderStock();});
+document.getElementById('customFood').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('addFood').click();});
+
+document.getElementById('protein').addEventListener('input',e=>{state.protein=+e.target.value;document.getElementById('proteinVal').textContent=state.protein+' g';save();});
+document.getElementById('calories').addEventListener('input',e=>{state.calories=+e.target.value;document.getElementById('calorieVal').textContent=state.calories+' kcal';save();});
+document.querySelectorAll('#times button').forEach(b=>b.addEventListener('click',()=>{state.time=b.dataset.value;sync();save();}));
+document.querySelectorAll('#servings button').forEach(b=>b.addEventListener('click',()=>{state.servings=b.dataset.value;sync();save();}));
+document.getElementById('extras').addEventListener('change',e=>{state.extras=e.target.checked;save();});
+document.getElementById('resetStock').addEventListener('click',()=>{if(confirm('Effacer tous les aliments du stock ? Cette action ne peut pas être annulée.')){state.stock=[];save();renderCategories();renderStock();}});
+document.getElementById('generate').addEventListener('click',()=>{
+ const box=document.getElementById('recipeResults');box.innerHTML='';
+ const stock=new Set(state.stock);
+ const kcal={'Poulet':120,'Dinde':110,'Bœuf haché':170,'Œufs':143,'Thon en boîte':116,'Saumon':208,'Poisson blanc':90,'Crevettes':99,'Tofu':145,'Lentilles':116,'Pois chiches':164,'Riz':360,'Pâtes':350,'Pommes de terre':77,'Semoule':360,'Quinoa':368,'Wraps':310,'Pain':265,'Flocons d’avoine':372,'Biscottes':390,'Muesli':370,'Granola':450,'Farine':364,'Galettes de riz':387,'Tomates':18,'Brocolis':34,'Carottes':41,'Poivrons':31,'Oignons':40,'Courgettes':17,'Champignons':22,'Salade':15,'Haricots verts':31,'Légumes surgelés':45,'Sauce tomate':35,'Coulis de tomate':30,'Crème légère':120,'Sauce soja':53,'Huile d’olive':884,'Moutarde':66,'Skyr':63,'Lait':46,'Fromage blanc':55,'Yaourt grec':97,'Whey':400,'Fromage râpé':350,'Mozzarella':250,'Parmesan':420,'Banane':89,'Pomme':52,'Fruits rouges':45,'Compote':50,'Confiture':250,'Miel':304,'Beurre de cacahuète':600,'Beurre de cacahuète en poudre':380,'Noix':650,'Chocolat':550,'Cacao non sucré':230,'Sucre':400,'Cannelle':250,'Jambon':115,'Fromage blanc protéiné':70,'Noix':650,'Pesto':450,'Crème fraîche':290,'Épices':250,'Café':2,'Thé':1,'Boisson végétale':40,'Édulcorant':0,'Concombre':15,'Menthe':44,'Gingembre':80,'Citron':29};
+ const prot={'Poulet':23,'Dinde':24,'Bœuf haché':21,'Œufs':13,'Thon en boîte':26,'Saumon':20,'Poisson blanc':20,'Crevettes':24,'Tofu':16,'Lentilles':9,'Pois chiches':9,'Riz':7,'Pâtes':12,'Pommes de terre':2,'Semoule':12,'Quinoa':14,'Wraps':9,'Pain':9,'Flocons d’avoine':13,'Biscottes':11,'Muesli':10,'Granola':9,'Farine':10,'Galettes de riz':8,'Tomates':1,'Brocolis':3,'Carottes':1,'Poivrons':1,'Oignons':1,'Courgettes':1,'Champignons':3,'Salade':1,'Haricots verts':2,'Légumes surgelés':2,'Sauce tomate':1,'Coulis de tomate':1,'Crème légère':3,'Sauce soja':8,'Huile d’olive':0,'Moutarde':4,'Skyr':11,'Lait':3.4,'Fromage blanc':8,'Yaourt grec':6,'Whey':80,'Fromage râpé':25,'Mozzarella':18,'Parmesan':35,'Banane':1,'Pomme':0.3,'Fruits rouges':1,'Compote':0.3,'Confiture':0.3,'Miel':0.3,'Beurre de cacahuète':25,'Beurre de cacahuète en poudre':45,'Noix':15,'Chocolat':7,'Cacao non sucré':20,'Sucre':0,'Cannelle':4,'Jambon':20,'Fromage blanc protéiné':10,'Pesto':5,'Crème fraîche':3,'Épices':10,'Café':0,'Thé':0,'Boisson végétale':1,'Édulcorant':0,'Concombre':0.7,'Menthe':3.3,'Gingembre':1.8,'Citron':1.1};
+ const photo={
+ meal:'https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=80',
+ pasta:'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80',
+ bowl:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80',
+ breakfast:'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80',
+ pancakes:'https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=80',
+ chicken:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80',
+ rice:'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80',
+ wrap:'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=900&q=80'
+ };
+ const recipes=[];
+ const has=(n)=>stock.has(n);
+ // Banque de recettes éditorialisées : chaque plat a une association d'ingrédients
+ // et une méthode de préparation dédiées. Les extras ne sont ajoutés que s'ils sont en stock.
+ const add=(title,required,optional,steps,time,image)=>{
+   const missing=required.filter(([n])=>!has(n)).map(([n])=>n);
+   const items=[...required,...optional.filter(([n])=>has(n) || state.extras)];
+   const totals=items.reduce((a,[n,g])=>({k:a.k+(kcal[n]??80)*g/100,p:a.p+(prot[n]??2)*g/100}),{k:0,p:0});
+   recipes.push({title,items,missing,steps,time,k:Math.round(totals.k),p:Math.round(totals.p),image:image||photo.meal});
+ };
+ if(state.moment==='Repas'){
+   // Plats complets : féculent pesé cru, viandes/poissons pesés crus, conserves égouttées.
+   add('Poulet crémeux à la moutarde, pommes grenailles', [['Poulet',180],['Pommes de terre',200],['Moutarde',12],['Crème légère',45]], [['Champignons',100],['Oignons',30]], 'Coupe les pommes de terre en petits quartiers et fais-les cuire au four ou à la poêle couverte avec un fond d’eau. Dore le poulet en morceaux. Mélange la moutarde et la crème avec 2 cuillères d’eau, ajoute au poulet et laisse épaissir 4 à 5 minutes. Sers avec les pommes de terre.',28,photo.chicken);
+   add('Poulet sauté soja-miel et légumes', [['Poulet',180],['Riz',55],['Sauce soja',15],['Légumes surgelés',180]], [['Miel',5],['Oignons',30]], 'Fais cuire le riz. Coupe le poulet en fines lamelles et saisis-le dans une poêle bien chaude. Ajoute les légumes et cuis jusqu’à ce qu’ils soient tendres. Verse la sauce soja, le miel si disponible et une cuillère d’eau, puis laisse la sauce enrober le tout. Sers sur le riz.',22,photo.rice);
+   add('Pâtes au thon, tomate et parmesan', [['Thon en boîte',120],['Pâtes',70],['Sauce tomate',130]], [['Parmesan',10],['Oignons',25]], 'Fais cuire les pâtes al dente. Fais chauffer la sauce tomate avec l’oignon finement émincé, puis ajoute le thon égoutté et émietté. Mélange avec les pâtes et termine par le parmesan si tu en as.',18,photo.pasta);
+   add('Boulettes de bœuf à la tomate et semoule', [['Bœuf haché',170],['Semoule',55],['Sauce tomate',150],['Oignons',35]], [['Épices',3]], 'Mélange le bœuf avec un peu d’oignon finement haché et les épices disponibles. Forme de petites boulettes et fais-les dorer. Ajoute la sauce tomate et un peu d’eau, couvre et laisse cuire à cœur 10 à 12 minutes. Prépare la semoule à part et sers avec la sauce.',25,photo.rice);
+   add('Curry doux de poulet et riz', [['Poulet',180],['Riz',55],['Crème légère',50],['Épices',4]], [['Oignons',35],['Brocolis',100]], 'Fais cuire le riz. Fais revenir l’oignon et les morceaux de poulet jusqu’à ce qu’ils soient dorés. Ajoute les épices, la crème légère et un petit fond d’eau. Laisse mijoter jusqu’à cuisson complète du poulet. Ajoute les brocolis cuits si tu en as et sers avec le riz.',25,photo.rice);
+   add('Wrap poulet façon kebab, sauce yaourt', [['Poulet',170],['Wraps',60],['Yaourt grec',50],['Salade',30],['Tomates',70]], [['Épices',3],['Oignons',20]], 'Assaisonne le poulet avec les épices, puis fais-le griller en lanières. Mélange le yaourt avec un peu de moutarde ou d’épices si disponibles. Réchauffe le wrap, garnis de salade, tomate, poulet et sauce, puis roule fermement.',20,photo.wrap);
+   add('Tacos de bœuf, tomate et fromage', [['Bœuf haché',150],['Wraps',60],['Tomates',70],['Fromage râpé',15]], [['Salade',25],['Épices',3],['Oignons',20]], 'Fais revenir l’oignon et le bœuf avec les épices jusqu’à cuisson complète. Coupe la tomate en petits dés. Garnis le wrap de viande, tomate, fromage et salade si disponible. Plie puis fais dorer une minute de chaque côté.',18,photo.wrap);
+   add('Saumon laqué soja, riz et concombre', [['Saumon',150],['Riz',55],['Sauce soja',12],['Concombre',100]], [['Miel',5]], 'Fais cuire le riz. Saisis le saumon côté peau si elle est présente, puis retourne-le et cuis jusqu’à ce qu’il soit juste opaque. Ajoute la sauce soja, le miel si disponible et une cuillère d’eau pour former un glaçage. Sers avec le concombre en fines lamelles.',22,photo.rice);
+   add('Riz sauté aux crevettes et œuf', [['Crevettes',160],['Riz',55],['Légumes surgelés',150],['Œufs',50],['Sauce soja',12]], [['Oignons',20]], 'Fais cuire le riz puis égoutte-le bien. Saisis les crevettes, ajoute les légumes et fais revenir jusqu’à évaporation de l’eau. Pousse sur un côté, brouille l’œuf dans la poêle, puis ajoute le riz et la sauce soja. Fais sauter 2 minutes en mélangeant.',20,photo.rice);
+   add('Tofu croustillant soja, brocolis et riz', [['Tofu',180],['Riz',50],['Sauce soja',15],['Brocolis',160]], [['Miel',5]], 'Éponge le tofu et coupe-le en cubes. Fais-le dorer sur toutes ses faces dans une poêle antiadhésive. Ajoute la sauce soja, le miel si disponible et une cuillère d’eau. Sers avec le riz et les brocolis cuits.',22,photo.rice);
+   add('Pâtes à la dinde façon ragù', [['Dinde',170],['Pâtes',65],['Sauce tomate',140],['Parmesan',8]], [['Oignons',30],['Champignons',80]], 'Fais revenir la dinde hachée ou coupée très finement avec l’oignon. Ajoute la sauce tomate et laisse mijoter 10 minutes. Fais cuire les pâtes al dente, mélange-les à la sauce et parsème de parmesan.',22,photo.pasta);
+   add('Salade niçoise au thon et œuf', [['Thon en boîte',120],['Pommes de terre',160],['Œufs',50],['Haricots verts',100],['Tomates',100]], [['Salade',30],['Moutarde',8]], 'Fais cuire les pommes de terre en morceaux, les haricots verts et l’œuf. Laisse tiédir. Égoutte le thon et assemble avec les tomates et la salade. Prépare une vinaigrette courte avec la moutarde, un peu d’eau et une petite quantité d’huile si elle est en stock.',25,photo.bowl);
+   add('Shakshuka aux poivrons et œufs', [['Œufs',150],['Tomates',180],['Poivrons',100],['Oignons',40]], [['Épices',3],['Pain',40]], 'Fais fondre l’oignon et le poivron émincés dans une poêle avec un peu d’eau. Ajoute les tomates et les épices, puis laisse réduire 8 minutes. Creuse deux petits puits, casse les œufs dedans, couvre et cuis jusqu’à ce que les blancs soient pris. Sers avec le pain si disponible.',18,photo.bowl);
+   add('Lentilles mijotées aux carottes et jambon', [['Lentilles',200],['Carottes',100],['Oignons',40],['Jambon',70]], [['Tomates',80],['Épices',2]], 'Fais revenir l’oignon et les carottes en petits dés dans une casserole avec un peu d’eau. Ajoute les lentilles et de l’eau à hauteur, puis laisse cuire jusqu’à tendreté en suivant le temps du paquet. Ajoute le jambon en lanières en fin de cuisson.',30,photo.meal);
+   add('Cabillaud, pommes de terre et sauce moutarde', [['Poisson blanc',200],['Pommes de terre',180],['Haricots verts',150],['Moutarde',10]], [['Fromage blanc',50],['Citron',10]], 'Fais cuire les pommes de terre et les haricots verts. Cuis le poisson à la poêle antiadhésive ou au four jusqu’à ce qu’il se détache facilement. Mélange la moutarde avec le fromage blanc si disponible et un peu d’eau pour une sauce fraîche.',25,photo.meal);
+   add('Couscous express aux pois chiches et légumes', [['Pois chiches',130],['Semoule',50],['Carottes',80],['Courgettes',100],['Tomates',120]], [['Épices',4],['Oignons',30]], 'Coupe les légumes en dés. Fais revenir l’oignon, ajoute les carottes, les courgettes, les tomates, les pois chiches, les épices et un verre d’eau. Couvre et laisse mijoter jusqu’à ce que les légumes soient tendres. Prépare la semoule à part et sers avec le bouillon.',28,photo.rice);
+   add('Hachis parmentier minute au bœuf', [['Bœuf haché',150],['Pommes de terre',220],['Carottes',60],['Oignons',35]], [['Fromage râpé',10]], 'Fais cuire les pommes de terre puis écrase-les avec un peu d’eau de cuisson. Fais revenir le bœuf avec l’oignon et la carotte coupée très finement jusqu’à cuisson complète. Mets la viande dans un petit plat, couvre de purée et ajoute un peu de fromage si disponible. Fais gratiner quelques minutes ou dore à la poêle couverte.',30,photo.meal);
+   add('Dahl de lentilles au poulet', [['Poulet',130],['Lentilles',160],['Tomates',130],['Épices',4]], [['Oignons',30],['Crème légère',25]], 'Fais dorer le poulet en petits morceaux avec l’oignon. Ajoute les lentilles, les tomates, les épices et de l’eau. Laisse mijoter en remuant et ajoute de l’eau si nécessaire jusqu’à ce que les lentilles soient tendres et le poulet cuit.',28,photo.rice);
+   add('Pommes de terre sautées, jambon et œufs', [['Pommes de terre',200],['Jambon',90],['Œufs',100],['Oignons',35]], [['Champignons',80]], 'Coupe les pommes de terre en petits dés et fais-les cuire à couvert dans une poêle avec un fond d’eau, puis découvre pour les dorer. Ajoute l’oignon et le jambon en lanières. Fais deux espaces dans la poêle, casse les œufs et couvre jusqu’à cuisson.',25,photo.meal);
+ } else {
+   // Petits-déjeuners et goûters : recettes reconnaissables, pas de combinaisons aléatoires.
+   add('Pancakes banane-avoine, skyr en topping', [['Banane',70],['Œufs',100],['Flocons d’avoine',35],['Skyr',100]], [['Cannelle',2],['Fruits rouges',50]], 'Écrase la banane, ajoute les œufs et les flocons, puis mélange. Laisse épaissir 2 minutes. Fais cuire de petits pancakes dans une poêle antiadhésive à feu moyen, environ 2 minutes par face. Sers avec le skyr et les fruits rouges si disponibles.',12,photo.pancakes);
+   add('Porridge pomme-cannelle et fromage blanc', [['Flocons d’avoine',40],['Lait',150],['Pomme',120],['Fromage blanc',150]], [['Cannelle',2],['Miel',5]], 'Coupe la pomme en petits dés. Fais chauffer les flocons avec le lait 3 à 5 minutes en remuant. Ajoute la pomme et la cannelle, puis cuis encore 2 minutes. Sers avec le fromage blanc et un peu de miel si tu en as.',10,photo.breakfast);
+   add('Overnight oats façon tiramisu', [['Skyr',180],['Flocons d’avoine',30],['Café',30],['Cacao non sucré',4]], [['Whey',15],['Banane',40]], 'Mélange le skyr, le café refroidi et la whey si disponible. Incorpore les flocons, lisse la surface et laisse au frais au moins 2 heures, idéalement toute la nuit. Saupoudre de cacao avant de manger.',5,photo.breakfast);
+   add('Bol cheesecake aux fruits rouges', [['Fromage blanc',200],['Fruits rouges',100],['Flocons d’avoine',20]], [['Miel',5],['Whey',15]], 'Mélange le fromage blanc avec la whey si disponible pour obtenir une texture épaisse. Dépose les fruits rouges dessus. Fais dorer les flocons à sec dans une poêle 2 minutes, laisse refroidir puis parsème le bol.',7,photo.breakfast);
+   add('Pain perdu à la cannelle', [['Pain',60],['Œufs',50],['Lait',60],['Cannelle',2]], [['Compote',50],['Édulcorant',2]], 'Bats l’œuf avec le lait et la cannelle. Trempe le pain des deux côtés sans le détremper. Fais dorer à la poêle antiadhésive 2 à 3 minutes par face. Sers avec la compote si disponible.',10,photo.breakfast);
+   add('Bowl cake cacao et banane', [['Flocons d’avoine',30],['Œufs',50],['Banane',60],['Skyr',100],['Cacao non sucré',5]], [['Whey',15]], 'Écrase la banane dans un bol adapté au micro-ondes. Ajoute l’œuf, le skyr, les flocons, le cacao et la whey si disponible. Mélange puis cuis 1 minute 30 à 2 minutes, en vérifiant la texture toutes les 30 secondes.',6,photo.breakfast);
+   add('Crème façon stracciatella protéinée', [['Skyr',250],['Whey',20],['Chocolat',8]], [['Fruits rouges',60]], 'Mélange le skyr et la whey jusqu’à obtenir une crème lisse. Hache finement le chocolat et incorpore-le. Ajoute les fruits rouges si disponibles. Laisse 5 minutes au frais pour raffermir.',5,photo.breakfast);
+   add('Crème cacahuète-cacao', [['Skyr',220],['Beurre de cacahuète en poudre',15],['Cacao non sucré',4]], [['Banane',50],['Whey',15]], 'Mélange la poudre de cacahuète avec une cuillère à soupe d’eau pour former une pâte. Incorpore le skyr, le cacao et la whey si disponible. Coupe la banane en rondelles et dépose-la dessus.',5,photo.breakfast);
+   add('Tartines fraîches façon tzatziki', [['Pain',70],['Yaourt grec',100],['Concombre',80]], [['Menthe',2],['Œufs',50]], 'Râpe le concombre et presse-le pour retirer l’excès d’eau. Mélange-le au yaourt grec et à la menthe si disponible, puis poivre si tu en as. Fais griller le pain et étale la préparation. Ajoute l’œuf dur en rondelles si disponible.',10,photo.breakfast);
+   add('Gaufres express avoine et fromage blanc', [['Flocons d’avoine',35],['Œufs',100],['Fromage blanc',80]], [['Banane',50],['Cannelle',2]], 'Mixe ou écrase finement les flocons, puis mélange avec les œufs et le fromage blanc. Laisse reposer 3 minutes. Verse dans un gaufrier chaud légèrement graissé et cuis jusqu’à ce que les gaufres soient dorées. Ajoute la banane si disponible.',12,photo.pancakes);
+   add('Bol skyr, compote et crumble minute', [['Skyr',220],['Compote',100],['Flocons d’avoine',20]], [['Beurre de cacahuète en poudre',10],['Cannelle',2]], 'Fais griller les flocons à sec dans une poêle 2 à 3 minutes en remuant. Mélange la poudre de cacahuète avec quelques gouttes d’eau si tu l’utilises. Verse la compote sur le skyr et ajoute les flocons croustillants juste avant de servir.',7,photo.breakfast);
+   add('Muffin minute pomme-cannelle', [['Flocons d’avoine',30],['Œufs',50],['Pomme',70],['Fromage blanc',80]], [['Cannelle',2],['Whey',15]], 'Râpe la pomme. Mélange avec l’œuf, le fromage blanc, les flocons, la cannelle et la whey si disponible. Verse dans une grande tasse et cuis au micro-ondes par tranches de 30 secondes jusqu’à ce que le centre soit pris.',6,photo.breakfast);
+ }
+ // Recherche d'abord les recettes qui respectent tous les objectifs. Si aucune ne convient,
+ // affiche les plus proches sous le plafond calorique, en signalant clairement l'écart protéique.
+ const expanded=[], near=[];
+ const eligible=recipes.filter((r,i,a)=>a.findIndex(x=>x.title===r.title)===i&&r.time<=Number(state.time));
+ function evaluate(pool){
+   pool.forEach(r=>{
+     let best=null, closest=null;
+     for(let factor=0.35;factor<=3.501;factor+=0.025){
+       const items=r.items.map(([n,g])=>[n,Math.max(1,Math.round(g*factor/5)*5)]);
+       const totals=items.reduce((a,[n,g])=>({k:a.k+(kcal[n]??80)*g/100,p:a.p+(prot[n]??2)*g/100}),{k:0,p:0});
+       if(totals.k>state.calories)continue;
+       const candidate={...r,items,k:Math.round(totals.k),p:Math.round(totals.p),portionFactor:factor};
+       const deficit=Math.max(0,state.protein-candidate.p);
+       const score=deficit*100+(state.calories-candidate.k)*0.08+(candidate.missing.length*35);
+       if(!closest||score<closest.score)closest={...candidate,score};
+       if(totals.p>=state.protein&&(!best||candidate.k>best.k||(candidate.k===best.k&&candidate.p>best.p)))best=candidate;
+     }
+     if(best)expanded.push(best);
+     if(closest)near.push(closest);
+   });
+ }
+ // Priorité aux recettes réalisables avec le stock. Si aucune ne peut satisfaire les objectifs
+ // (ou si aucune n'entre dans le plafond calorique), élargit aux recettes avec quelques ingrédients à acheter.
+ const fromStock=eligible.filter(r=>!r.missing.length);
+ evaluate(fromStock);
+ if(!expanded.length){ expanded.length=0; near.length=0; evaluate(eligible); }
+ expanded.sort((a,b)=>(state.calories-b.k)-(state.calories-a.k));
+ near.sort((a,b)=>a.score-b.score);
+ const strictMode=expanded.length>0;
+ const chosen=(strictMode?expanded:near).slice(0,12);
+ const note=document.createElement('p');note.className='note';
+ note.textContent=strictMode
+  ? 'Ces recettes respectent tes deux objectifs. Les quantités sont ajustées pour se rapprocher du plafond calorique sans le dépasser.'
+  : chosen.length
+    ? 'Aucune recette disponible ne respecte exactement les deux objectifs. Voici les options les plus proches sous ton plafond calorique ; certaines peuvent demander des ingrédients à acheter ou rester sous le minimum de protéines. Cela vaut aussi pour les petits-déjeuners et goûters.'
+    : 'Aucune recette ne rentre dans ce plafond avec le temps choisi. Essaie un temps de préparation plus long ou autorise des ingrédients à acheter ; les petits-déjeuners et goûters utilisent le même système de recherche élargie.';
+ box.appendChild(note);
+ if(!chosen.length)return;
+ function renderRecipe(r){
+  const card=document.createElement('article');card.className='recipe';
+  const img=document.createElement('img');img.src=r.image;img.alt='Illustration du plat '+r.title;img.loading='lazy';img.onerror=()=>{img.onerror=null;img.src=photo.meal;};card.appendChild(img);
+  const h=document.createElement('h3');h.textContent=r.title;card.appendChild(h);
+  const meta=document.createElement('div');meta.className='recipe-meta';meta.innerHTML='<span>Par portion</span><strong>'+state.servings+' portion'+(Number(state.servings)>1?'s':'')+' au total</strong>';card.appendChild(meta);
+  const pills=document.createElement('div');pills.className='pills';
+  [r.k+' kcal',r.p+' g protéines',r.time+' min'].forEach((t,i)=>{const el=document.createElement('span');el.className='pill';el.textContent=t;pills.appendChild(el);});card.appendChild(pills);
+  if(!strictMode&&r.p<state.protein){const warning=document.createElement('p');warning.className='note';warning.textContent='Il manque environ '+Math.ceil(state.protein-r.p)+' g de protéines pour atteindre ton objectif.';card.appendChild(warning);}
+  if(r.missing&&r.missing.length){const missing=document.createElement('p');missing.className='note';missing.textContent='À acheter : '+r.missing.join(', ')+'.';card.appendChild(missing);}
+  const ing=document.createElement('div');ing.className='recipe-section';const ih=document.createElement('strong');ih.textContent='Ingrédients'+(Number(state.servings)>1?' · pour '+state.servings+' portions':'');ing.appendChild(ih);
+  const il=document.createElement('p');il.textContent=r.items.map(([n,g])=>`${n} ${g*Number(state.servings)} g`).join(' · ')+'.';ing.appendChild(il);card.appendChild(ing);
+  const st=document.createElement('div');st.className='recipe-section preparation-section';const sh=document.createElement('strong');sh.textContent='Préparation pas à pas';st.appendChild(sh);
+  const stepsList=document.createElement('ol');stepsList.className='preparation-steps';
+  // Présente chaque action comme une étape distincte pour rendre la recette facile à suivre.
+  const instructions=String(r.steps).match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[String(r.steps)];
+  instructions.map(x=>x.trim()).filter(Boolean).forEach((instruction,index)=>{const li=document.createElement('li');const num=document.createElement('span');num.className='step-number';num.textContent=String(index+1).padStart(2,'0');const copy=document.createElement('span');copy.className='step-copy';copy.textContent=instruction;li.append(num,copy);stepsList.appendChild(li);});
+  st.appendChild(stepsList);card.appendChild(st);
+  const foot=document.createElement('p');foot.className='note';foot.textContent='Calories et protéines indiquées par portion. Valeurs estimées ; féculents pesés crus sauf indication contraire. Vérifie les étiquettes.';card.appendChild(foot);
+  const copy=document.createElement('button');copy.className='btn primary full';copy.style.marginTop='8px';copy.textContent='Ingrédients pour YAZIO';copy.addEventListener('click',async()=>{
+   const txt=[
+    r.title,
+    'Ingrédients — quantité totale pour '+state.servings+' portion(s)',
+    ...r.items.map(([n,g])=>n+' : '+(g*Number(state.servings))+' g')
+   ].join('\n');
+   try{
+    if(navigator.share&&/Android|iPhone|iPad/i.test(navigator.userAgent)){
+      await navigator.share({title:'Recette YAZIO — '+r.title,text:txt});
+      copy.textContent='✓ Ingrédients partagés';
+    }else if(navigator.clipboard&&navigator.clipboard.writeText){
+      await navigator.clipboard.writeText(txt);
+      copy.textContent='✓ Ingrédients copiés pour YAZIO';
+    }else{
+      const ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+      const ok=document.execCommand('copy');ta.remove();copy.textContent=ok?'✓ Recette copiée pour YAZIO':'Copie indisponible';
+    }
+   }catch(err){if(err&&err.name==='AbortError')return;copy.textContent='Copie impossible — réessaie';}
+  });card.appendChild(copy);
+  const yazioTip=document.createElement('p');yazioTip.className='note';yazioTip.textContent='Pour YAZIO, le bouton copie uniquement le nom de la recette et la liste détaillée des ingrédients avec leurs quantités totales. La préparation et les informations nutritionnelles ne sont pas incluses.';card.appendChild(yazioTip);
+  box.appendChild(card);
+ }
+ chosen.forEach(r=>renderRecipe(r));
+});
+sync();renderCategories();renderStock();
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) { window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(err => console.warn('Service worker non enregistré', err))); }
+</script>
+</body>
+</html>
